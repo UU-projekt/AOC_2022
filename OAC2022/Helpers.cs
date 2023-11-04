@@ -94,7 +94,8 @@ namespace OAC2022
         {
             new Day1(),
             new Day2(),
-            new Day3()
+            new Day3(),
+            new Day4()
         };
 
         public static void RunChallange(int day)
