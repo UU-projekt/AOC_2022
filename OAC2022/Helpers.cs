@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OAC2022.Day_1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,8 +59,47 @@ namespace OAC2022
             Console.WriteLine();
         }
 
-        public static void RunChallange(int day, Day code)
+        public static bool Within(int a, int b, int val)
         {
+            if (val < a || b < val) return false;
+            return true;
+        }
+
+        public class MutedConsole : IDisposable
+        {
+            private TextWriter _writerOut;
+            private TextWriter _writerErr;
+
+            public MutedConsole()
+            {
+                _writerOut = Console.Out;
+                _writerErr = Console.Error;
+                Console.SetOut(TextWriter.Null);
+                Console.SetError(TextWriter.Null);
+            }
+
+            public static MutedConsole Get()
+            {
+                return new MutedConsole();
+            }
+
+            public virtual void Dispose()
+            {
+                Console.SetOut(_writerOut);
+                Console.SetError(_writerErr);
+            }
+        }
+
+        static Day[] Solutions =
+        {
+            new Day1(),
+            new Day2(),
+            new Day3()
+        };
+
+        public static void RunChallange(int day)
+        {
+            Day code = Solutions[day - 1];
             string[] testData = Helpers.ReadInput(day, false);
 
             string[] realData = Helpers.ReadInput(day, true);
@@ -68,11 +108,26 @@ namespace OAC2022
 
             Console.WriteLine("Challange 1");
             Helpers.Assert(code.TestValue1, code.Challange1(testData));
-            Console.WriteLine($"value: {code.Challange1(realData)}");
+
+            int res1 = 0;
+            using(MutedConsole.Get())
+            {
+                res1 = code.Challange1(realData);
+            }
+
+            Console.WriteLine($"value: {res1}");
 
             Console.WriteLine("\nChallange 2");
             Helpers.Assert(code.TestValue2, code.Challange2(testData));
-            Console.WriteLine($"value: {code.Challange2(realData)}");
+
+            int res2 = 0;
+            using(MutedConsole.Get())
+            {
+                res2 = code.Challange2(realData);
+            }
+
+            Console.WriteLine($"value: {res2}");
+
         }
     }
 }
