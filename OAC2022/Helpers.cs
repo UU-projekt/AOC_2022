@@ -4,12 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace OAC2022
 {
     public class Helpers
     {
-        static string INPUTS_DIR = "C:\\Users\\jonat\\OneDrive\\Gammalt\\Documents\\AOC\\2022";
+        // X:\OneDrive\Gammalt\Documents\AOC\2022
+        // C:\\Users\\jonat\\OneDrive\\Gammalt\\Documents\\AOC\\2022
+
+        static string INPUTS_DIR = "X:\\OneDrive\\Gammalt\\Documents\\AOC\\2022";
         public static string[] ReadInput(int day, bool real = true)
         {
             using(var sr = new StreamReader(Path.Join(INPUTS_DIR, $"day_{(real ? "" : "test_")}{day}.txt")))
@@ -21,6 +25,29 @@ namespace OAC2022
                 }
 
                 return result.ToArray();
+            }
+        }
+
+        public static class Colour
+        {
+            public static class Colours
+            {
+                public const string
+                    Black = "30m",
+                    Red = "31m",
+                    Green = "32m",
+                    Yellow = "33m",
+                    Blue = "34m",
+                    Purple = "35m",
+                    Cyan = "36m",
+                    White = "37m";
+
+
+            }
+            
+            public static string Text<T>(T input, string colour = Colours.Cyan)
+            {
+                return $"\x1b[{colour}{input}\x1b[0m";
             }
         }
 
