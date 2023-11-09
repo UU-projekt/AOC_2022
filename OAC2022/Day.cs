@@ -10,7 +10,7 @@ namespace OAC2022
     {
         public int ChallangeDay { get; init; }
         public bool AssertTest(int test);
-        public string Run(int challange);
+        public string? Run(int challange);
     }
     public abstract class Day<T> : IDaySolve where T : IEquatable<T>
     {
@@ -31,7 +31,7 @@ namespace OAC2022
             return res;
         }
 
-        public string Run(int challange)
+        public string? Run(int challange)
         {
             string[] realData = Helpers.ReadInput(ChallangeDay, true);
             using(Helpers.MutedConsole.Get())

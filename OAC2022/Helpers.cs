@@ -92,7 +92,7 @@ namespace OAC2022
             }
         }
 
-        static IDaySolve[] Solutions =
+        public static IDaySolve[] Solutions =
         {
             new Day1() { ChallangeDay = 1 },
             new Day2() { ChallangeDay = 2 },
@@ -100,6 +100,7 @@ namespace OAC2022
             new Day4() { ChallangeDay = 4 },
             new Day5() { ChallangeDay = 5 },
             new Day6() { ChallangeDay = 6 },
+            new Day7() { ChallangeDay = 7 },
         };
 
         public static void RunChallange(int day)

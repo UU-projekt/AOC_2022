@@ -53,6 +53,8 @@ namespace OAC2022.Day_1
             {
                 get
                 {
+                    // this can be made more efficient by caching the result if no change to the array
+                    // has been made. 
                     int res = 0;
                     foreach (char c in array)
                     {
