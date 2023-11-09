@@ -24,7 +24,7 @@ namespace OAC2022
             }
         }
 
-        public static void Assert<T>(T certain, T result) where T : IEquatable<T>
+        public static bool Assert<T>(T certain, T result) where T : IEquatable<T>
         {
             bool equal = certain.Equals(result);
 
@@ -41,6 +41,8 @@ namespace OAC2022
             Console.WriteLine($"Assert {certain} = {result}");
 
             Console.ResetColor();
+
+            return equal;
         }
 
         public static void PrettyPrint<T>(T[] arr, bool newLines = false)
@@ -90,44 +92,27 @@ namespace OAC2022
             }
         }
 
-        static Day[] Solutions =
+        static IDaySolve[] Solutions =
         {
-            new Day1(),
-            new Day2(),
-            new Day3(),
-            new Day4()
+            new Day1() { ChallangeDay = 1 },
+            new Day2() { ChallangeDay = 2 },
+            new Day3() { ChallangeDay = 3 },
+            new Day4() { ChallangeDay = 4 },
+            new Day5() { ChallangeDay = 5 },
+            new Day6() { ChallangeDay = 6 },
         };
 
         public static void RunChallange(int day)
         {
-            Day code = Solutions[day - 1];
-            string[] testData = Helpers.ReadInput(day, false);
-
-            string[] realData = Helpers.ReadInput(day, true);
-
-            Console.WriteLine($"Advent Of Code day {day}");
-
-            Console.WriteLine("Challange 1");
-            Helpers.Assert(code.TestValue1, code.Challange1(testData));
-
-            int res1 = 0;
-            using(MutedConsole.Get())
+            IDaySolve code = Solutions[day - 1];
+            
+            for(int i = 1; i <= 2; i++)
             {
-                res1 = code.Challange1(realData);
+                Console.WriteLine($"Challange {i}:");
+                code.AssertTest(i);
+                var val = code.Run(i);
+                Console.WriteLine($"value: {val}");
             }
-
-            Console.WriteLine($"value: {res1}");
-
-            Console.WriteLine("\nChallange 2");
-            Helpers.Assert(code.TestValue2, code.Challange2(testData));
-
-            int res2 = 0;
-            using(MutedConsole.Get())
-            {
-                res2 = code.Challange2(realData);
-            }
-
-            Console.WriteLine($"value: {res2}");
 
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OAC2022.Day_1
 {
-    public class TEMPLATE : Day
+    public class TEMPLATE : Day<int>
     {
         override public int TestValue1
         {
@@ -22,14 +22,8 @@ namespace OAC2022.Day_1
                 return 69;
             }
         }
-        override public int Challange1(string[] input)
-        {
-            return -1;
-        }
+        override public int Challange1(string[] input) => -1;
 
-        override public int Challange2(string[] input)
-        {
-            return -1;
-        }
+        override public int Challange2(string[] input) => -1;
     }
 }
