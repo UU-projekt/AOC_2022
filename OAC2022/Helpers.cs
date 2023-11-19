@@ -13,7 +13,7 @@ namespace OAC2022
         // X:\OneDrive\Gammalt\Documents\AOC\2022
         // C:\\Users\\jonat\\OneDrive\\Gammalt\\Documents\\AOC\\2022
 
-        static string INPUTS_DIR = "X:\\OneDrive\\Gammalt\\Documents\\AOC\\2022";
+        static string INPUTS_DIR = "C:\\Users\\jonat\\OneDrive\\Gammalt\\Documents\\AOC\\2022";
         public static string[] ReadInput(int day, bool real = true)
         {
             using(var sr = new StreamReader(Path.Join(INPUTS_DIR, $"day_{(real ? "" : "test_")}{day}.txt")))
@@ -128,6 +128,7 @@ namespace OAC2022
             new Day5() { ChallangeDay = 5 },
             new Day6() { ChallangeDay = 6 },
             new Day7() { ChallangeDay = 7 },
+            new Day8() { ChallangeDay = 8 },
         };
 
         public static void RunChallange(int day)
